@@ -14,26 +14,26 @@ import torch.nn as nn
 class Net (nn.Module):
     def __init__ (self):
         super (Net, self).__init__()
-        self.conv1 = nn.Conv2d(32, 3, kernel_size=3)
+        self.conv1 = nn.Conv2d(3, 32, kernel_size=3)
         self.bn1 = nn.BatchNorm2d(32)
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.drop1 = nn.Dropout(0.5)
         
-        self.conv2 = nn.Conv2d(64, 32, kernel_size=3)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3)
         self.bn2 = nn.BatchNorm2d(64)
         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.drop2 = nn.Dropout(0.5)
         
-        self.conv3 = nn.Conv2d(128, 64, kernel_size=3)
+        self.conv3 = nn.Conv2d(64, 128, kernel_size=3)
         self.bn3 = nn.BatchNorm2d(128)
         self.pool3 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.drop3 = nn.Dropout(0.5)
         
         self.flatten = nn.Flatten()
-        self.fc1 = nn.Dense(64*64*128, 512)
+        self.fc1 = nn.Linear(26*26*128, 512)
         self.drop4 = nn.Dropout(0.5)
-        self.fc2 = nn.Dense(512, 64)
-        self.fc3 = nn.Dense(64, 1)
+        self.fc2 = nn.Linear(512, 64)
+        self.fc3 = nn.Linear(64, 1)
         
     def forward (self, x):
         x = torch.relu(self.conv1(x))
