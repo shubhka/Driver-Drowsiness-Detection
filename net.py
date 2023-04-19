@@ -8,7 +8,6 @@ Created on Wed Apr 19 14:14:08 2023
 #%% Importing Libraries
 import torch
 import torch.nn as nn
-from torchvision import models
 
 #%% Architecture
 
